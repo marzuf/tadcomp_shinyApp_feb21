@@ -1,0 +1,72 @@
+
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <!-- <title> Compare TAD partitions - Help </title> -->
+
+  <style>
+  p{
+    align:justify
+  }
+  </style>
+
+</head>
+
+<body>
+
+<h2> Help for comparison of TAD partitions </h2>
+
+<h3> Input </h3>
+
+<p>
+Input files should be text files in BED-like format (chr-start-end).
+The tool can be used with provided demo files.
+</p>
+
+
+<p>
+Set the parameters for similarity calculation in the left panel.
+</p>
+
+<h3> Output </h3>
+
+<p>
+Overview of the loaded data in the "Loaded data" tab.
+</p>
+
+<p>
+Descriptive features of the input data in the "Dataset overview" tab.
+</p>
+
+<p>
+Results of the similarity metric calculation in the "Similarity table" (data frame) and "Similarity heatmap" (heatmap) tabs. They can be downloaded in "txt" and "png" format respectively.
+</p>
+
+<h3> Similary metric calculation </h3>
+
+<!--<h4>Following metrics are currently implemented: </h4>-->
+Following metrics are currently implemented: 
+
+<p align="justify">
+<ul>
+<li> Measure of Concordance (MoC) (warning: can be slow)</li>
+<li> Jaccard index (bins)</li>
+<li> Jaccard index (boundaries)</li>
+<li> Ratio of matching TADs</li>
+<li> Variation of information</li>
+</ul>
+</p>
+
+<p>
+See the tab "Details about the metrics" for more information.
+</p>
+
+
+
+</body>
+</html>
+
+

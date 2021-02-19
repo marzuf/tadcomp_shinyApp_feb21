@@ -1,0 +1,10 @@
+name: tadcomp
+title:
+username:
+account: comparetadpartitions
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1383820
+bundleId: 4241278
+url: https://comparetadpartitions.shinyapps.io/tadcomp/
+when: 1613661979.75381

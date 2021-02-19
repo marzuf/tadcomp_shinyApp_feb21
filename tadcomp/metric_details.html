@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <!-- <title> Compare TAD partitions - Help </title> -->
+
+  <style>
+  p{
+    align:justify
+  }
+  </style>
+
+</head>
+
+<body>
+
+<h2> More details on the implementation metrics </h2>
+
+<h4> Measure of concordance (MoC) </h4>
+
+The Measure of Concordance (MoC), previously introduced to compare clustering partitions (Pfitzner et al. 2009), can be used to assess the similarity between two TAD caller results. Briefly, given two sets of TADs, MoC assesses the overlap between each pair of TADs, measured in number of base pairs and considering the overall size of both TADs. MoC ranges from 0, complete lack of concordance, to 1, perfect concordance, and it has the desirable property of being symmetric.
+<br>
+<u>Parameters to set:</u> None.
+<br>
+<br>
+<br>
+<h4> Jaccard index (bins) </h4>
+
+For each bin of the genome, compare if it belongs to a boundary or a TAD. It is hence a symmetric measure, and range between 0 (totally discordant) and 1 (identical partition).
+<br>
+<u>Parameters to set:</u> 
+<p align="justify">
+<ul>
+<li> bin size</li>
+</ul>
+</p>
+<br>
+<br>
+<br>
+
+<h4> Jaccard index (boundaries) </h4>
+
+For each boundary bin, check if it is also a boundary in the other dataset (with a certain tolerance radius). It is hence an asymmetric measure and ranges between 0 and 1.
+<br>
+<u>Parameters to set:</u> 
+<p align="justify">
+<ul>
+<li> tolerance radius</li>
+<li> direction of matching</li>
+</ul>
+</p>
+<br>
+<br>
+<br>
+
+<h4> Ratio of matching TADs </h4>
+
+For each TAD of a set, check if it is matching another TAD (with at least a certain % of coverage) in the other set. It is hence an asymmetric measure and ranges between 0 and 1.
+<br>
+<u>Parameters to set:</u> 
+<p align="justify">
+<ul>
+<li> minimal coverage required for matching</li>
+<li> direction of matching</li>
+</ul>
+</p>
+<br>
+<br>
+<br>
+<h4> Variation of information </h4>
+
+See <a href="https://almob.biomedcentral.com/articles/10.1186/1748-7188-9-14">Filippova et al. (2014)</a>. It is a symmetric measure, which is not bounded.
+<br>
+<u>Parameters to set:</u> None.
+
+
+
+<!--
+# plot_TADlist_comparison(TAD_list= list(TopDom=topdom_dt, CaTCH=catch_dt, Arrowhead=arrowhead_dt, HiCseg=hicseg_dt), "get_MoC", nCpu=1)
+# plot_TADlist_comparison(TAD_list= list(TopDom=topdom_dt, CaTCH=catch_dt, Arrowhead=arrowhead_dt, HiCseg=hicseg_dt), "get_bin_JaccardIndex", nCpu=1, binSize = bin_size)
+# plot_TADlist_comparison(TAD_list= list(TopDom=topdom_dt, CaTCH=catch_dt, Arrowhead=arrowhead_dt, HiCseg=hicseg_dt),"get_boundaries_JaccardIndex", nCpu=1, tolRad = bin_size*2, matchFor="all")
+# plot_TADlist_comparison(TAD_list= list(TopDom=topdom_dt, CaTCH=catch_dt, Arrowhead=arrowhead_dt, HiCseg=hicseg_dt),"get_ratioMatchingTADs", nCpu=1, coverMatchRatioThresh = 0.8, matchFor="all")
+# plot_TADlist_comparison(TAD_list= list(TopDom=topdom_dt, CaTCH=catch_dt, Arrowhead=arrowhead_dt, HiCseg=hicseg_dt),"get_variationInformation", nCpu=1)
+-->
+
+
+</body>
+</html>
