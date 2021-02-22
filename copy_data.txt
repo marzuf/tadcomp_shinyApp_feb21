@@ -1,0 +1,53 @@
+arrowhead.chromo 	arrowhead.start 	arrowhead.end 	CaTCH.chromo 	CaTCH.start 	CaTCH.end 	hicseg.chromo 	hicseg.start 	hicseg.end 	topDom.chromo 	topDom.start 	topDom
+
+cp /mnt/ed2/shared/TADcompare/pipeline/12_07_Cmap_10k_rep1_ICE/output_formated/ICE/domains/HiCseg_final_domains.txt cp_data/HiCseg_10kb_ICE_final_domains.txt
+cp /mnt/ed2/shared/TADcompare/pipeline/12_07_Cmap_10k_rep1_ICE/output_formated/ICE/domains/CaTCH_final_domains.txt cp_data/CaTCH_10kb_ICE_final_domains.txt
+cp /mnt/ed2/shared/TADcompare/pipeline/12_07_Cmap_10k_rep1_ICE/output_formated/ICE/domains/TopDom_final_domains.txt cp_data/TopDom_10kb_ICE_final_domains.txt
+cp /mnt/ed2/shared/TADcompare/pipeline/12_07_Cmap_10k_rep1_ICE/output_formated/ICE/domains/arrowhead_final_domains.txt cp_data/arrowhead_10kb_ICE_final_domains.txt
+
+cp /mnt/ed2/shared/TADcompare/pipeline/12_07_Cmap_50k_rep1_ICE/output_formated/ICE/domains/HiCseg_final_domains.txt cp_data/HiCseg_50kb_ICE_final_domains.txt
+cp /mnt/ed2/shared/TADcompare/pipeline/12_07_Cmap_50k_rep1_ICE/output_formated/ICE/domains/CaTCH_final_domains.txt cp_data/CaTCH_50kb_ICE_final_domains.txt
+cp /mnt/ed2/shared/TADcompare/pipeline/12_07_Cmap_50k_rep1_ICE/output_formated/ICE/domains/TopDom_final_domains.txt cp_data/TopDom_50kb_ICE_final_domains.txt
+cp /mnt/ed2/shared/TADcompare/pipeline/12_07_Cmap_50k_rep1_ICE/output_formated/ICE/domains/arrowhead_final_domains.txt cp_data/arrowhead_50kb_ICE_final_domains.txt
+
+
+cp /mnt/ed2/shared/TADcompare/pipeline/12_07_Cmap_100k_rep1_ICE/output_formated/ICE/domains/HiCseg_final_domains.txt cp_data/HiCseg_100kb_ICE_final_domains.txt
+cp /mnt/ed2/shared/TADcompare/pipeline/12_07_Cmap_100k_rep1_ICE/output_formated/ICE/domains/CaTCH_final_domains.txt cp_data/CaTCH_100kb_ICE_final_domains.txt
+cp /mnt/ed2/shared/TADcompare/pipeline/12_07_Cmap_100k_rep1_ICE/output_formated/ICE/domains/TopDom_final_domains.txt cp_data/TopDom_100kb_ICE_final_domains.txt
+cp /mnt/ed2/shared/TADcompare/pipeline/12_07_Cmap_100k_rep1_ICE/output_formated/ICE/domains/arrowhead_final_domains.txt cp_data/arrowhead_100kb_ICE_final_domains.txt
+
+
+cp /mnt/ed2/shared/TADcompare/pipeline/12_07_Cmap_10k_rep1_LGF/output_formated/LGF/domains/HiCseg_final_domains.txt cp_data/HiCseg_10kb_LGF_final_domains.txt
+cp /mnt/ed2/shared/TADcompare/pipeline/12_07_Cmap_10k_rep1_LGF/output_formated/LGF/domains/CaTCH_final_domains.txt cp_data/CaTCH_10kb_LGF_final_domains.txt
+cp /mnt/ed2/shared/TADcompare/pipeline/12_07_Cmap_10k_rep1_LGF/output_formated/LGF/domains/TopDom_final_domains.txt cp_data/TopDom_10kb_LGF_final_domains.txt
+cp /mnt/ed2/shared/TADcompare/pipeline/12_07_Cmap_10k_rep1_LGF/output_formated/LGF/domains/arrowhead_final_domains.txt cp_data/arrowhead_10kb_LGF_final_domains.txt
+
+cp /mnt/ed2/shared/TADcompare/pipeline/12_07_Cmap_50k_rep1_LGF/output_formated/LGF/domains/HiCseg_final_domains.txt cp_data/HiCseg_50kb_LGF_final_domains.txt
+cp /mnt/ed2/shared/TADcompare/pipeline/12_07_Cmap_50k_rep1_LGF/output_formated/LGF/domains/CaTCH_final_domains.txt cp_data/CaTCH_50kb_LGF_final_domains.txt
+cp /mnt/ed2/shared/TADcompare/pipeline/12_07_Cmap_50k_rep1_LGF/output_formated/LGF/domains/TopDom_final_domains.txt cp_data/TopDom_50kb_LGF_final_domains.txt
+cp /mnt/ed2/shared/TADcompare/pipeline/12_07_Cmap_50k_rep1_LGF/output_formated/LGF/domains/arrowhead_final_domains.txt cp_data/arrowhead_50kb_LGF_final_domains.txt
+
+
+cp /mnt/ed2/shared/TADcompare/pipeline/12_07_Cmap_100k_rep1_LGF/output_formated/LGF/domains/HiCseg_final_domains.txt cp_data/HiCseg_100kb_LGF_final_domains.txt
+cp /mnt/ed2/shared/TADcompare/pipeline/12_07_Cmap_100k_rep1_LGF/output_formated/LGF/domains/CaTCH_final_domains.txt cp_data/CaTCH_100kb_LGF_final_domains.txt
+cp /mnt/ed2/shared/TADcompare/pipeline/12_07_Cmap_100k_rep1_LGF/output_formated/LGF/domains/TopDom_final_domains.txt cp_data/TopDom_100kb_LGF_final_domains.txt
+cp /mnt/ed2/shared/TADcompare/pipeline/12_07_Cmap_100k_rep1_LGF/output_formated/LGF/domains/arrowhead_final_domains.txt cp_data/arrowhead_100kb_LGF_final_domains.txt
+
+
+cp /mnt/ed2/shared/TADcompare/pipeline/13_11_Cmap_50k_rep1_ICE_sub0.1/output_formated/ICE/domains/HiCseg_final_domains.txt cp_data/50kb/ICE/sub0.1/HiCseg_50kb_ICE_sub0.1_final_domains.txt
+cp /mnt/ed2/shared/TADcompare/pipeline/13_11_Cmap_50k_rep1_ICE_sub0.1/output_formated/ICE/domains/CaTCH_final_domains.txt cp_data/50kb/ICE/sub0.1/CaTCH_50kb_ICE_sub0.1_final_domains.txt
+cp /mnt/ed2/shared/TADcompare/pipeline/13_11_Cmap_50k_rep1_ICE_sub0.1/output_formated/ICE/domains/TopDom_final_domains.txt cp_data/50kb/ICE/sub0.1/TopDom_50kb_ICE_sub0.1_final_domains.txt
+cp /mnt/ed2/shared/TADcompare/pipeline/13_11_Cmap_50k_rep1_ICE_sub0.1/output_formated/ICE/domains/arrowhead_final_domains.txt cp_data/50kb/ICE/sub0.1/arrowhead_50kb_ICE_sub0.1_final_domains.txt
+
+cp /mnt/ed2/shared/TADcompare/pipeline/13_11_Cmap_50k_rep1_ICE_sub0.01/output_formated/ICE/domains/HiCseg_final_domains.txt cp_data/50kb/ICE/sub0.01/HiCseg_50kb_ICE_sub0.01_final_domains.txt
+cp /mnt/ed2/shared/TADcompare/pipeline/13_11_Cmap_50k_rep1_ICE_sub0.01/output_formated/ICE/domains/CaTCH_final_domains.txt cp_data/50kb/ICE/sub0.01/CaTCH_50kb_ICE_sub0.01_final_domains.txt
+cp /mnt/ed2/shared/TADcompare/pipeline/13_11_Cmap_50k_rep1_ICE_sub0.01/output_formated/ICE/domains/TopDom_final_domains.txt cp_data/50kb/ICE/sub0.01/TopDom_50kb_ICE_sub0.01_final_domains.txt
+cp /mnt/ed2/shared/TADcompare/pipeline/13_11_Cmap_50k_rep1_ICE_sub0.01/output_formated/ICE/domains/arrowhead_final_domains.txt cp_data/50kb/ICE/sub0.01/arrowhead_50kb_ICE_sub0.01_final_domains.txt
+
+
+cp /mnt/ed2/shared/TADcompare/pipeline/13_11_Cmap_50k_rep1_ICE_sub0.001/output_formated/ICE/domains/HiCseg_final_domains.txt cp_data/50kb/ICE/sub0.001/HiCseg_50kb_ICE_sub0.001_final_domains.txt
+cp /mnt/ed2/shared/TADcompare/pipeline/13_11_Cmap_50k_rep1_ICE_sub0.001/output_formated/ICE/domains/CaTCH_final_domains.txt cp_data/50kb/ICE/sub0.001/CaTCH_50kb_ICE_sub0.001_final_domains.txt
+cp /mnt/ed2/shared/TADcompare/pipeline/13_11_Cmap_50k_rep1_ICE_sub0.001/output_formated/ICE/domains/TopDom_final_domains.txt cp_data/50kb/ICE/sub0.001/TopDom_50kb_ICE_sub0.001_final_domains.txt
+cp /mnt/ed2/shared/TADcompare/pipeline/13_11_Cmap_50k_rep1_ICE_sub0.001/output_formated/ICE/domains/arrowhead_final_domains.txt cp_data/50kb/ICE/sub0.001/arrowhead_50kb_ICE_sub0.001_final_domains.txt
+# arrowhead 0.001: not available
+
