@@ -209,6 +209,11 @@ shinyUI(fluidPage(
                                   # tags$div("Please wait - Datasets loading...",id="loading_message")
                                   tags$span(style="color:blue", tags$div("Please wait - Datasets loading...",id="loading_message"))
                                   ),
+                 
+                 conditionalPanel(condition="output.domainFilesUploaded == false & input.demo == false",
+                                  # tags$div("Please wait - Analysis running...",id="running_message")
+                                  tags$span(style="color:orange",tags$div("No Hi-C data selected",id="nohicdata_message"))
+                 ),
                  tableOutput("loaded_data"),
                  
                  
@@ -218,6 +223,11 @@ shinyUI(fluidPage(
                                   # tags$div("Please wait - Datasets loading...",id="loading_message")
                                   tags$span(style="color:blue", tags$div("Please wait - Datasets loading...",id="loading_message"))
                  ),
+                 
+                 conditionalPanel(condition="output.chipFilesUploaded == false & input.demo_CTCF == false & input.demo_RAD21 == false & input.demo_SMC3 == false",
+                                  # tags$div("Please wait - Analysis running...",id="running_message")
+                                  tags$span(style="color:orange",tags$div("No ChIP-seq data selected",id="nochipdata_message"))
+                 ),
                  tableOutput("loaded_data_chip")
         ),
         ###### TAB WITH CURRENT SELECTED PARAMETERS #####
@@ -226,18 +236,17 @@ shinyUI(fluidPage(
         ),
         
         ###### TAB WITH CURRENT SELECTED PARAMETERS #####
-        tabPanel("Dataset overview",
+        tabPanel("Hi-C data overview",
                  conditionalPanel(condition="$('html').hasClass('shiny-busy')",
                                   # tags$div("Please wait - Analysis running...",id="running_message")
                                   tags$span(style="color:blue",tags$div("Please wait - Analysis running...",id="running_message"))
                                   ),
                  
-                 ##### !!! THIS IS NOT WORKING !!! NEED TO WORK ON THAT !!! 22.02.21
                  
-                 # conditionalPanel(condition="output.domainFilesUploaded == true",
-                 #                  # tags$div("Please wait - Analysis running...",id="running_message")
-                 #                  tags$span(style="color:orange",tags$div("No Hi-C data loaded",id="nohicdata_message"))
-                 # ),
+                 conditionalPanel(condition="output.domainFilesUploaded == false & input.demo == false",
+                                  # tags$div("Please wait - Analysis running...",id="running_message")
+                                  tags$span(style="color:orange",tags$div("No Hi-C data selected",id="nohicdata_message"))
+                 ),
                  
                  
                  
@@ -250,7 +259,8 @@ shinyUI(fluidPage(
                  # conditionalPanel(condition="! $('html').hasClass('shiny-busy')",
                  #                  downloadButton('downloadDescTable', 'Download # TADs table (.txt)')),
                  # not need conditional because redo all the analysis for downloading...
-                 downloadButton('downloadDescTable', 'Download # TADs table (.txt)'),
+                 conditionalPanel(condition="output.domainFilesUploaded == true | input.demo == true",
+                                  downloadButton('downloadDescTable', 'Download # TADs table (.txt)')),
                  HTML(    '</td>
                                <td>
                               <style>a#outputDwld{width:200px;height:30px;padding-top:5px;}</style>'),
@@ -258,7 +268,8 @@ shinyUI(fluidPage(
                  # conditionalPanel(condition="! $('html').hasClass('shiny-busy')",
                  #                  downloadButton('downloadDescPlot', 'Download # TADs and size plots (.png)')),
                  # not need conditional because redo all the analysis for downloading...
-                 downloadButton('downloadDescPlot', 'Download # TADs and size plots (.png)'),
+                 conditionalPanel(condition="output.domainFilesUploaded == true | input.demo == true",
+                                  downloadButton('downloadDescPlot', 'Download # TADs and size plots (.png)')),
                  
                  HTML(    '</td>
                           </tr>
@@ -315,6 +326,10 @@ shinyUI(fluidPage(
                                   tags$span(style="color:blue",tags$div("Please wait - Analysis running...",id="running_message"))),
                                             # tags$div("Please wait - Analysis running...",id="running_message")),
                  
+                 conditionalPanel(condition="output.domainFilesUploaded == false & input.demo == false",
+                                  # tags$div("Please wait - Analysis running...",id="running_message")
+                                  tags$span(style="color:orange",tags$div("No Hi-C data selected",id="nohicdata_message"))
+                 ),
                  
                  tableOutput("simTable"),
                  
@@ -326,7 +341,9 @@ shinyUI(fluidPage(
                  # conditionalPanel(condition="! $('html').hasClass('shiny-busy')",
                  #                  downloadButton('downloadSimTable', 'Download similarity table (.txt)')),
                  # not need conditional because redo all the analysis for downloading...
-                 downloadButton('downloadSimTable', 'Download similarity table (.txt)'),
+                 conditionalPanel(condition="output.domainFilesUploaded == true | input.demo == true ",
+                                  downloadButton('downloadSimTable', 'Download similarity table (.txt)')
+                 ),
                  
                  HTML(    '
                           </tr>
@@ -383,6 +400,13 @@ shinyUI(fluidPage(
                                   # tags$div("Please wait - Analysis running...",id="running_message")
                                   tags$span(style="color:blue",tags$div("Please wait - Analysis running...",id="running_message"))
                                   ),
+                 
+                 
+                 conditionalPanel(condition="output.domainFilesUploaded == false & input.demo == false",
+                                  # tags$div("Please wait - Analysis running...",id="running_message")
+                                  tags$span(style="color:orange",tags$div("No Hi-C data selected",id="nohicdata_message"))
+                 ),
+                 
                  plotOutput("simHeatmap"),
                  HTML(    '<table style="width:100%">
                           <tr>
@@ -391,13 +415,23 @@ shinyUI(fluidPage(
                  # conditionalPanel(condition="! $('html').hasClass('shiny-busy')",
                  #                  downloadButton('downloadSimHeatmapPNG', 'Download similarity heatmap (.png)')),
                  # # not needed conditional because redo
-                 downloadButton('downloadSimHeatmapPNG', 'Download similarity heatmap (.png)'),
+                 
+                 
+                 conditionalPanel(condition="output.domainFilesUploaded == true | input.demo == true",
+                                  downloadButton('downloadSimHeatmapPNG', 'Download similarity heatmap (.png)')
+                 ),
+                 
         
                  HTML(    '
                           </td>
                           <td>
                           <style>a#outputDwld{width:200px;height:30px;padding-top:5px;}</style>'),
-                 downloadButton('downloadSimHeatmapSVG', 'Download similarity heatmap (.svg)'),
+                 
+                 
+                 conditionalPanel(condition="output.domainFilesUploaded == true | input.demo == true",
+                                  downloadButton('downloadSimHeatmapSVG', 'Download similarity heatmap (.svg)')
+                 ),
+                 
                           
                           HTML('    
                           </td>
@@ -543,7 +577,7 @@ shinyUI(fluidPage(
             
             conditionalPanel(condition="input.multi_datasetForStructProt == ''",
                              # tags$div("No protein selected",id="running_message")),
-                             tags$span(style="color:orange", tags$div("No dataset selected",id="nods_message"))
+                             tags$span(style="color:orange", tags$div("No Hi-C dataset selected",id="nods_message"))
             ),
             
             

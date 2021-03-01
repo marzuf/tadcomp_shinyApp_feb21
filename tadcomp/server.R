@@ -315,7 +315,7 @@ shinyServer(function(input, output){
       head(curr_dt)
       curr_dt$dataset <- filenames[i]
       curr_dt
-      }))
+    }))
     
     head(all_domains_dt)
     
@@ -323,12 +323,12 @@ shinyServer(function(input, output){
     all_domains_dt$size_log10 <- log10(all_domains_dt$size)
     
     nbr_dt <- aggregate(size~dataset, FUN=length, data=all_domains_dt)
-
+    
     p1 <- ggboxplot(data = all_domains_dt, 
-                   x = "dataset",
-                   y = "size_log10",
-                   xlab="",
-                   ylab="TAD size [log10")
+                    x = "dataset",
+                    y = "size_log10",
+                    xlab="",
+                    ylab="TAD size [log10")
     p2 <- ggbarplot(data = nbr_dt,
                     x = "dataset",
                     y= "size",
@@ -362,13 +362,28 @@ shinyServer(function(input, output){
     contentType="text"
   )
   
+  ##### to display message if no data selected:
+  # https://stackoverflow.com/a/21535587/1100107
   getData <- reactive({
     if(is.null(input$allDomainFiles)) return(NULL)
+    return(1)
   })
   output$domainFilesUploaded <- reactive({
     print(paste0("input$allDomainFiles = ", input$allDomainFiles))
     return(!is.null(getData()))
   })
+  outputOptions(output, 'domainFilesUploaded', suspendWhenHidden=FALSE)
+  
+  ### for the chipseq
+  getDataChip <- reactive({
+    if(is.null(input$smc3File) & 
+       is.null(input$ctcfFile) &  is.null(input$rad21File)) return(NULL)
+    return(1)
+  })
+  output$chipFilesUploaded <- reactive({
+    return(!is.null(getDataChip()))
+  })
+  outputOptions(output, 'chipFilesUploaded', suspendWhenHidden=FALSE)
   
   ############################################-----------------------------------------------------------------------------------
   ### Tab with similarity table      ###-----------------------------------------------------------------------------------
@@ -446,9 +461,9 @@ shinyServer(function(input, output){
     metricOut <- do.call(plot_TADlist_comparison,
                          # c(list(all_domains_dt, metric=input$simMetric, lowColor=heatmapLowCol, highColor=heatmapHighCol, nCpu=input$nCpu),
                          #   getMetricArgs(input$simMetric)))
-                             c(list(all_domains_dt, metric=input$table_simMetric, lowColor=heatmapLowCol, highColor=heatmapHighCol, nCpu=input$nCpu),
+                         c(list(all_domains_dt, metric=input$table_simMetric, lowColor=heatmapLowCol, highColor=heatmapHighCol, nCpu=input$nCpu),
                            getMetricArgs(input$table_simMetric)))
-                         
+    
     outDt <- metricOut[[2]]
     # colnames(outDt)[3] <- names(possible_metrics)[possible_metrics == input$simMetric]
     colnames(outDt)[3] <- names(possible_metrics)[possible_metrics == input$table_simMetric]
@@ -458,7 +473,7 @@ shinyServer(function(input, output){
   ###
   ##### Functions to download the output DT #####
   ###
-
+  
   output$downloadSimTable <- downloadHandler(
     # filename=paste0(getSimMetric(), "_simTable.txt"), # does not work without function call
     filename=paste0(getSimMetric_table(), "_simTable.txt"), # does not work without function call
@@ -504,11 +519,11 @@ shinyServer(function(input, output){
     names(all_domains_dt) <- gsub("_final_domains.txt", "", filenames)
     
     metricOut <- do.call(plot_TADlist_comparison,
-    #                      c(list(all_domains_dt, metric=input$simMetric, lowColor=heatmapLowCol, highColor=heatmapHighCol, nCpu=input$nCpu),
-                           # getMetricArgs(input$simMetric)))
-                          c(list(all_domains_dt, metric=input$heatmap_simMetric, lowColor=heatmapLowCol, highColor=heatmapHighCol, nCpu=input$nCpu),
-                            getMetricArgs(input$heatmap_simMetric)))
-                        
+                         #                      c(list(all_domains_dt, metric=input$simMetric, lowColor=heatmapLowCol, highColor=heatmapHighCol, nCpu=input$nCpu),
+                         # getMetricArgs(input$simMetric)))
+                         c(list(all_domains_dt, metric=input$heatmap_simMetric, lowColor=heatmapLowCol, highColor=heatmapHighCol, nCpu=input$nCpu),
+                           getMetricArgs(input$heatmap_simMetric)))
+    
     simPlot <- metricOut[[1]]
     
     return(simPlot)
@@ -548,8 +563,8 @@ shinyServer(function(input, output){
     metricOut <- do.call(plot_TADlist_comparison,
                          # c(list(all_domains_dt, metric=input$simMetric, lowColor=heatmapLowCol, highColor=heatmapHighCol, nCpu=input$nCpu),
                          #   getMetricArgs(input$simMetric)))
-                        c(list(all_domains_dt, metric=input$heatmap_simMetric, lowColor=heatmapLowCol, highColor=heatmapHighCol, nCpu=input$nCpu),
-                          getMetricArgs(input$heatmap_simMetric)))
+                         c(list(all_domains_dt, metric=input$heatmap_simMetric, lowColor=heatmapLowCol, highColor=heatmapHighCol, nCpu=input$nCpu),
+                           getMetricArgs(input$heatmap_simMetric)))
     simPlot <- metricOut[[1]]
     
     return(simPlot)
@@ -641,15 +656,15 @@ shinyServer(function(input, output){
     }
     
     print(paste0("domain_file = ", domain_file))
-  
+    
     domain_dt <- read.table(domain_file,
-                          header=fileHeader, 
-                          stringsAsFactors = FALSE,  sep=fieldSep)#col.names=c("chromo", "start", "end"),
+                            header=fileHeader, 
+                            stringsAsFactors = FALSE,  sep=fieldSep)#col.names=c("chromo", "start", "end"),
     head(domain_dt)
     
     plotTit <- ifelse(input$enrichmentPlotTit == "" | length(input$enrichmentPlotTit) == 0 |is.null(input$enrichmentPlotTit) ,
                       basename(domain_file), input$enrichmentPlotTit)
-
+    
     print(paste0("plotTit = ", plotTit))
     print(paste0("is.null plotTit = ", is.null(plotTit)))
     print(paste0("empty plotTit = ", plotTit==""))
@@ -663,12 +678,12 @@ shinyServer(function(input, output){
     stopifnot(is.numeric(hic_res))
     stopifnot(is.numeric(input$structProt_resStep))
     
-     get_structEnrichmentPlot(tad_dt=domain_dt, proteins = input$structProtSelect,
-                              resolution_kb=hic_res, 
-                              res_step=input$structProt_resStep,
-                              # ProteinPeaks_Folder=proteinPeaks_Folder,
-                              ProteinPeaks_Files=get_structProtFiles(),
-                              plot_tit = plotTit)
+    get_structEnrichmentPlot(tad_dt=domain_dt, proteins = input$structProtSelect,
+                             resolution_kb=hic_res, 
+                             res_step=input$structProt_resStep,
+                             # ProteinPeaks_Folder=proteinPeaks_Folder,
+                             ProteinPeaks_Files=get_structProtFiles(),
+                             plot_tit = plotTit)
     # get_structEnrichmentPlot()
   }
   
@@ -858,8 +873,8 @@ shinyServer(function(input, output){
     
     all_domain_dt <- lapply(all_domain_files, function(xfile) {
       read.table(xfile,
-                              header=fileHeader, 
-                              stringsAsFactors = FALSE,  sep=fieldSep)#col.names=c("chromo", "start", "end"),
+                 header=fileHeader, 
+                 stringsAsFactors = FALSE,  sep=fieldSep)#col.names=c("chromo", "start", "end"),
     })
     stopifnot(length(all_domain_dt) == length(all_domain_files))
     ds_names <- paste0(seq_along(all_domain_files), "_", basename(all_domain_files))
@@ -870,10 +885,10 @@ shinyServer(function(input, output){
     plotTit <- ifelse(input$multi_enrichmentPlotTit == "" | 
                         length(input$multi_enrichmentPlotTit) == 0 |is.null(input$multi_enrichmentPlotTit) ,
                       defaultTit, input$multi_enrichmentPlotTit)
-# 
+    # 
     plot_regexsub <- ifelse(input$multi_enrichmentRegexSub == "" |
-                        length(input$multi_enrichmentRegexSub) == 0 |is.null(input$multi_enrichmentRegexSub) ,
-                      "", input$multi_enrichmentRegexSub)
+                              length(input$multi_enrichmentRegexSub) == 0 |is.null(input$multi_enrichmentRegexSub) ,
+                            "", input$multi_enrichmentRegexSub)
     
     
     
@@ -892,12 +907,12 @@ shinyServer(function(input, output){
     
     get_multiStructEnrichmentPlot(all_tad_dt=all_domain_dt, 
                                   proteins = input$multi_structProtSelect,
-                             resolution_kb=hic_res, 
-                             res_step=input$structProt_resStep,
-                             # ProteinPeaks_Folder=proteinPeaks_Folder,
-                             ProteinPeaks_Files=get_structProtFiles(),
-                             plot_tit = plotTit,
-                             regexsub = plot_regexsub)
+                                  resolution_kb=hic_res, 
+                                  res_step=input$structProt_resStep,
+                                  # ProteinPeaks_Folder=proteinPeaks_Folder,
+                                  ProteinPeaks_Files=get_structProtFiles(),
+                                  plot_tit = plotTit,
+                                  regexsub = plot_regexsub)
     # get_structEnrichmentPlot()
   }
   
@@ -944,7 +959,7 @@ shinyServer(function(input, output){
   
   observeEvent(input$nCpu, {
     if(input$nCpu > 40)
-    showNotification(paste0("Do you really have ", input$nCpu," available ?\n"), type="error")  #  position of the warning set in ui.R (css)
+      showNotification(paste0("Do you really have ", input$nCpu," available ?\n"), type="error")  #  position of the warning set in ui.R (css)
   })
   
 })
